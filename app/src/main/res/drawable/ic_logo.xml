@@ -1,13 +1,13 @@
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
     android:width="200dp"
     android:height="200dp"
-    android:viewportWidth="354"
-    android:viewportHeight="353">
+    android:viewportWidth="350"
+    android:viewportHeight="350">
 
     <group
         android:name="animationGroup"
-        android:pivotX="150"
-        android:pivotY="150">
+        android:pivotX="175"
+        android:pivotY="175">
         <path
             android:fillColor="#ffffff"
             android:pathData="M16,172.5a161,160.5 0,1 0,322 0a161,160.5 0,1 0,-322 0z" />
