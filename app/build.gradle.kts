@@ -8,6 +8,12 @@ plugins {
     alias(libs.plugins.detekt)
 }
 
+allprojects {
+    detekt {
+        config.setFrom(file("${rootProject.rootDir}/config/detekt/detekt.yml"))
+    }
+}
+
 android {
     namespace = "com.rmso.irecipe"
     compileSdk = 34
