@@ -38,7 +38,6 @@ class MainActivity : ComponentActivity() {
         }
         setContent {
             IRecipeTheme {
-
             }
         }
     }
