@@ -1,47 +1,45 @@
 package com.rmso.irecipe.ui
 
+import android.animation.ObjectAnimator
 import android.os.Bundle
+import android.view.View
+import android.view.animation.AnticipateInterpolator
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.core.animation.doOnEnd
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.rmso.irecipe.ui.theme.IRecipeTheme
+import org.koin.androidx.viewmodel.ext.android.viewModel
+
+private const val ANIMATION_DURATION = 500L
 
 class MainActivity : ComponentActivity() {
+    private val viewModel by viewModel<MainViewModel>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContent {
-            IRecipeTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
+        viewModel.onStart()
+        installSplashScreen().apply {
+            setKeepOnScreenCondition {
+                !viewModel.uiState.value.isReady
+            }
+
+            setOnExitAnimationListener { screen ->
+                val slideUp = ObjectAnimator.ofFloat(
+                    screen.iconView,
+                    View.TRANSLATION_Y,
+                    0f,
+                    -screen.iconView.height.toFloat()
+                )
+                slideUp.interpolator = AnticipateInterpolator()
+                slideUp.duration = ANIMATION_DURATION
+                slideUp.doOnEnd { screen.remove() }
+                slideUp.start()
             }
         }
-    }
-}
+        setContent {
+            IRecipeTheme {
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    IRecipeTheme {
-        Greeting("Android")
+            }
+        }
     }
 }
