@@ -1,6 +1,9 @@
 package com.rmso.irecipe.domain.di
 
+import com.rmso.irecipe.domain.usecase.GetRecipesUseCase
 import org.koin.dsl.module
 
 val domainModule =
-    module { }
+    module {
+        single { GetRecipesUseCase(get()) }
+    }
