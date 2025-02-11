@@ -19,8 +19,8 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.rmso.irecipe.ui.theme.IRecipeTheme
-import com.rmso.irecipe.ui.theme.Typography
 import com.rmso.irecipe.ui.theme.Orange500
+import com.rmso.irecipe.ui.theme.Typography
 
 @Composable
 fun RecipeButton(
@@ -29,35 +29,35 @@ fun RecipeButton(
     @DrawableRes iconRes: Int? = null,
     isEnabled: Boolean = true,
     isLoading: Boolean = false,
-    onClick: () -> Unit,
+    onClick: () -> Unit
 ) {
     Button(
         modifier = modifier
             .height(56.dp),
         shape = shapes.medium,
         colors = ButtonDefaults.buttonColors(
-            containerColor = Orange500,
+            containerColor = Orange500
         ),
         enabled = isEnabled,
-        onClick = onClick,
+        onClick = onClick
     ) {
         iconRes?.let {
             Icon(
                 painter = painterResource(id = iconRes),
-                contentDescription = null,
+                contentDescription = null
             )
         }
         if (isLoading) {
             CircularProgressIndicator(
                 modifier = Modifier
                     .size(24.dp)
-                    .wrapContentSize(align = Alignment.Center),
+                    .wrapContentSize(align = Alignment.Center)
             )
         } else {
             Text(
                 modifier = Modifier.padding(start = ButtonDefaults.IconSpacing),
                 text = text,
-                style = Typography.labelLarge,
+                style = Typography.labelLarge
             )
         }
     }

@@ -71,7 +71,7 @@ private fun RecipeFilterChipListPreview() {
                     id = 4,
                     name = "kid-friendly",
                     type = "cooking_style"
-                ),
+                )
             ),
             onSelectedTagChanged = {}
         )

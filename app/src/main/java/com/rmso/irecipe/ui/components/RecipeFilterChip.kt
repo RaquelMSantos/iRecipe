@@ -48,7 +48,7 @@ fun RecipeFilterChip(
         colors = FilterChipDefaults.filterChipColors(
             containerColor = Gray100,
             selectedContainerColor = Orange500
-        ),
+        )
     )
 }
 

@@ -4,7 +4,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Text
@@ -18,18 +17,20 @@ import com.rmso.irecipe.ui.theme.Typography
 @Composable
 fun RecipeCardList(
     modifier: Modifier = Modifier,
-    title: String? = "",
+    title: String? = null,
     recipeList: List<Recipe>,
     onRecipeClick: (Recipe) -> Unit
 ) {
-    Column (
+    Column(
         modifier = modifier.fillMaxWidth()
-    ){
-        Text(
-            text = title.toString(),
-            style = Typography.headlineMedium,
-            color = State900
-        )
+    ) {
+        title?.let {
+            Text(
+                text = it,
+                style = Typography.headlineMedium,
+                color = State900
+            )
+        }
         Spacer(modifier = Modifier.height(16.dp))
         LazyRow {
             items(recipeList) { recipe ->

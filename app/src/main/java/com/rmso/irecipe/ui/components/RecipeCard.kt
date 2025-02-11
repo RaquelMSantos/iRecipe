@@ -1,16 +1,14 @@
 package com.rmso.irecipe.ui.components
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.BookmarkBorder
-import androidx.compose.material.icons.filled.Star
 import androidx.compose.material.icons.outlined.Timer
 import androidx.compose.material3.Card
 import androidx.compose.material3.Icon
@@ -20,6 +18,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -33,7 +32,6 @@ import com.rmso.irecipe.ui.theme.Orange500
 import com.rmso.irecipe.ui.theme.State400
 import com.rmso.irecipe.ui.theme.State500
 import com.rmso.irecipe.ui.theme.Typography
-import com.rmso.irecipe.ui.theme.Yellow
 
 @Composable
 fun RecipeCard(
@@ -48,56 +46,49 @@ fun RecipeCard(
             .padding(end = 8.dp),
         onClick = onCardClick
     ) {
-        Column (
+        Column(
             modifier = Modifier.fillMaxWidth()
-        ){
+        ) {
             AsyncImage(
                 model = recipe.thumbnailUrl,
                 contentDescription = null,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(200.dp),
+                    .height(300.dp),
                 contentScale = ContentScale.Crop
             )
             Text(
-                modifier = Modifier.padding(start = 24.dp, end = 24.dp, bottom = 8.dp),
+                modifier = Modifier.padding(start = 24.dp, end = 24.dp, bottom = 8.dp, top = 24.dp),
                 text = recipe.name.toString(),
                 style = Typography.labelLarge,
                 maxLines = 1,
-                overflow = TextOverflow.Ellipsis
+                overflow = TextOverflow.Ellipsis,
+                textAlign = TextAlign.Start
             )
             Row(
-                modifier = Modifier.padding(start = 24.dp, bottom = 8.dp).fillMaxWidth(),
-                verticalAlignment = Alignment.CenterVertically
+                modifier = Modifier
+                    .padding(start = 24.dp, bottom = 8.dp, end = 24.dp)
+                    .fillMaxWidth(),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.SpaceBetween
             ) {
-                Icon(
-                    imageVector = Icons.Filled.Star,
-                    tint = Yellow,
-                    contentDescription = "Rating",
-                    modifier = Modifier.size(16.dp)
-                )
-                Text(
-                    modifier = Modifier.padding(start = 8.dp),
-                    style = Typography.bodyMedium,
-                    color = State500,
-                    text = "(${recipe.userRatings?.score?.times(10).toString()})"
-                )
-                Spacer(modifier = Modifier.width(8.dp))
-                Icon(
-                    imageVector = Icons.Outlined.Timer,
-                    contentDescription = "Preparation Time",
-                    modifier = Modifier.size(16.dp),
-                )
-                Text(
-                    modifier = Modifier.padding(start = 8.dp),
-                    style = Typography.bodyMedium,
-                    color = State500,
-                    text = "${recipe.prepTimeMinutes} min"
-                )
+                Row {
+                    Icon(
+                        imageVector = Icons.Outlined.Timer,
+                        contentDescription = "Preparation Time",
+                        modifier = Modifier.size(16.dp)
+                    )
+                    Text(
+                        modifier = Modifier.padding(start = 8.dp),
+                        style = Typography.bodyMedium,
+                        color = State500,
+                        text = "${recipe.prepTimeMinutes} min"
+                    )
+                }
 
-                Spacer(modifier = Modifier.weight(1f))
-
-                IconButton(onClick = { }) {
+                IconButton(
+                    onClick = { }
+                ) {
                     Icon(
                         imageVector = Icons.Filled.BookmarkBorder,
                         contentDescription = "Favorite",
@@ -120,9 +111,14 @@ private fun RecipeCardPreview() {
                 id = 1,
                 instructions = listOf(
                     Instruction(
-                        "In a blender or food processor, combine the yogurt, lime juice, pepper, and chili powder and pulse to combine. Add ½ of the avocado and blend until creamy."
-                    ), Instruction(
-                        "In a medium bowl, combine the chicken, yogurt sauce, celery, the remaining ½ avocado, onion, and salt. Mix until well combined."
+                        "In a blender or food processor, combine the yogurt, lime juice," +
+                                " pepper, and chili powder and pulse to combine. Add ½ of the " +
+                                "avocado and blend until creamy."
+                    ),
+                    Instruction(
+                        "In a medium bowl, combine the chicken, yogurt sauce, celery," +
+                                " the remaining ½ avocado, onion, and salt. " +
+                                "Mix until well combined."
                     )
                 ),
                 name = "Low-Carb Avocado Chicken Salad",
@@ -140,12 +136,11 @@ private fun RecipeCardPreview() {
                         id = 2,
                         name = "stove_top",
                         type = "appliance"
-                    ),
+                    )
                 ),
                 thumbnailUrl = "https://img.buzzfeed.com/thumbnailer-prod-us-east-1/45b4efeb5d2c4d29970344ae165615ab/FixedFBFinal.jpg",
-                userRatings = Ratings(0.918)
+                userRatings = Ratings(0.912342424)
             )
         )
     }
-
 }
