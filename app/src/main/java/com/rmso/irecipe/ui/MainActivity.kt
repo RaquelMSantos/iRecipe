@@ -8,6 +8,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.core.animation.doOnEnd
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import com.rmso.irecipe.navigation.RecipeNavHost
 import com.rmso.irecipe.ui.theme.IRecipeTheme
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -38,6 +39,7 @@ class MainActivity : ComponentActivity() {
         }
         setContent {
             IRecipeTheme {
+                RecipeNavHost(viewModel)
             }
         }
     }

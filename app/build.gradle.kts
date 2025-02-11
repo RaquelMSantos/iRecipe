@@ -1,3 +1,5 @@
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
@@ -18,6 +20,9 @@ android {
     namespace = "com.rmso.irecipe"
     compileSdk = 34
 
+    val properties = Properties()
+    properties.load(project.rootProject.file("local.properties").inputStream())
+
     defaultConfig {
         applicationId = "com.rmso.irecipe"
         minSdk = 24
@@ -29,6 +34,9 @@ android {
         vectorDrawables {
             useSupportLibrary = true
         }
+
+        buildConfigField("String", "API_KEY", properties.getProperty("API_KEY"))
+
     }
 
     buildTypes {
@@ -38,6 +46,10 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            buildConfigField("String", "BASE_URL", "\"https://tasty.p.rapidapi.com\"")
+        }
+        debug {
+            buildConfigField("String", "BASE_URL", "\"https://tasty.p.rapidapi.com\"")
         }
     }
     compileOptions {
