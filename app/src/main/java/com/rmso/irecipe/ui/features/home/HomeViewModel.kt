@@ -3,9 +3,9 @@ package com.rmso.irecipe.ui.features.home
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.rmso.irecipe.data.remote.api.Result.Success
-import com.rmso.irecipe.data.remote.api.Result.Loading
 import com.rmso.irecipe.data.remote.api.Result.Error
+import com.rmso.irecipe.data.remote.api.Result.Loading
+import com.rmso.irecipe.data.remote.api.Result.Success
 import com.rmso.irecipe.domain.usecase.GetRecipesUseCase
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow

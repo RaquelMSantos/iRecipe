@@ -10,7 +10,6 @@ import io.ktor.client.request.parameter
 import io.ktor.client.statement.HttpResponse
 import io.ktor.http.HttpStatusCode
 
-
 class TastyApiImpl(private val client: HttpClient) : TastyApi {
     override suspend fun getRecipes(): Result<TastyResponse?> =
         try {

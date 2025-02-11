@@ -71,7 +71,7 @@ data class RecipeResponse(
 //    val updated_at: Int,
 //    val user_id: Any,
     @SerialName("user_ratings")
-    val userRatings: RatingsResponse?,
+    val userRatings: RatingsResponse?
 //    val username: String,
 //    val video_ad_content: String,
 //    val video_id: Int,

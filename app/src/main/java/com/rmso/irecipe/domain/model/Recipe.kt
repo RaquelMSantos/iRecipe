@@ -11,7 +11,7 @@ data class Recipe(
     val prepTimeMinutes: Int?,
     val tags: List<Tag>?,
     val thumbnailUrl: String?,
-    val userRatings: Ratings?,
+    val userRatings: Ratings?
 )
 
 fun RecipeResponse.toDomain(): Recipe =
@@ -30,4 +30,3 @@ fun RecipeResponse.toDomain(): Recipe =
         thumbnailUrl = thumbnailUrl,
         userRatings = userRatings?.toDomain()
     )
-

@@ -9,6 +9,6 @@ data class Nutrition(
     val fat: Int?,
     val fiber: Int?,
     val protein: Int?,
-    val sugar: Int?,
+    val sugar: Int?
 //    val updated_at: String
 )

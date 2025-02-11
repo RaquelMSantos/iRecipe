@@ -12,7 +12,7 @@ object WelcomeRoute
 fun NavController.navigateToWelcome() = navigate(route = WelcomeRoute)
 
 fun NavGraphBuilder.welcomeScreen(
-    openNextScreen: () -> Unit,
+    openNextScreen: () -> Unit
 ) {
     composable<WelcomeRoute> {
         WelcomeScreen(

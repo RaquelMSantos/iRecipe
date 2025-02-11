@@ -7,6 +7,5 @@ fun SigInScreen(
     openRegisterScreen: () -> Unit,
     openHomeScreen: () -> Unit
 ) {
-
     SignInContent()
 }

@@ -7,7 +7,7 @@ import kotlinx.serialization.Serializable
 data class InstructionResponse(
 //    val appliance: String?,
     @SerialName("display_text")
-    val displayText: String?,
+    val displayText: String?
 //    val end_time: Int,
 //    val hacks: List<Hack>,
 //    val id: Int,

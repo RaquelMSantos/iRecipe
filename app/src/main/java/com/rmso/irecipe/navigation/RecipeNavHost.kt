@@ -7,13 +7,11 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
 import com.rmso.irecipe.domain.model.Recipe
 import com.rmso.irecipe.ui.MainViewModel
-import com.rmso.irecipe.ui.features.home.composable.HomeScreen
 import com.rmso.irecipe.ui.features.home.navigation.HomeRoute
 import com.rmso.irecipe.ui.features.home.navigation.homeScreen
 import com.rmso.irecipe.ui.features.home.navigation.navigateToHome
 import com.rmso.irecipe.ui.features.signin.navigation.navigateToSignIn
 import com.rmso.irecipe.ui.features.signin.navigation.signInScreen
-import com.rmso.irecipe.ui.features.welcome.navigation.WelcomeRoute
 import com.rmso.irecipe.ui.features.welcome.navigation.welcomeScreen
 
 @Composable

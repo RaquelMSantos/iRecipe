@@ -8,9 +8,8 @@ import com.rmso.irecipe.ui.theme.IRecipeTheme
 @Composable
 internal fun WelcomeContent(
     modifier: Modifier = Modifier,
-    onContinueButtonClick: () -> Unit,
+    onContinueButtonClick: () -> Unit
 ) {
-
 }
 
 @Preview
