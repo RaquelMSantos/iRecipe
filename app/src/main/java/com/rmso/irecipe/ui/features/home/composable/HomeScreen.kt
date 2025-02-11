@@ -4,7 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.rmso.irecipe.domain.model.Recipe
+import com.rmso.irecipe.domain.model.recipe.Recipe
 import com.rmso.irecipe.ui.features.home.HomeAction
 import com.rmso.irecipe.ui.features.home.HomeViewModel
 import org.koin.androidx.compose.koinViewModel

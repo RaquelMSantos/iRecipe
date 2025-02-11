@@ -1,4 +1,4 @@
-package com.rmso.irecipe.domain.model
+package com.rmso.irecipe.domain.model.recipe
 
 import com.rmso.irecipe.data.remote.model.TagResponse
 
