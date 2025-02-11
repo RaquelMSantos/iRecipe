@@ -27,7 +27,7 @@ fun RecipeNavHost(mainViewModel: MainViewModel) {
             openNextScreen = if (mainState.hasUser) {
                 navController::navigateToHome
             } else {
-                navController::navigateToSignIn
+                navController::navigateToHome
             }
         )
         homeScreen(

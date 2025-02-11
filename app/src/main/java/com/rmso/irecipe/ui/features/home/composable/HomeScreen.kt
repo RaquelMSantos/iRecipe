@@ -26,6 +26,6 @@ fun HomeScreen(
     }
     HomeContent(
         homeState = uiState,
-        onCardClick = openDetailsRecipeScreen
+        onRecipeClick = openDetailsRecipeScreen
     )
 }
