@@ -1,7 +1,9 @@
 package com.rmso.irecipe.domain.model.recipe
 
 import com.rmso.irecipe.data.remote.model.RecipeResponse
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class Recipe(
     val description: String?,
     val id: Int?,

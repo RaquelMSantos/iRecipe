@@ -17,7 +17,6 @@ class TastyApiImpl(private val client: HttpClient) : TastyApi {
                 url {
                     parameter("from", "0")
                     parameter("size", "50")
-                    parameter("tags", "italian")
                 }
             }
             responseToResult(response)

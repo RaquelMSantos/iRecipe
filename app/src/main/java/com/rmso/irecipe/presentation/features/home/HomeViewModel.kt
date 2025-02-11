@@ -1,6 +1,5 @@
 package com.rmso.irecipe.presentation.features.home
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.rmso.irecipe.data.remote.api.Result.Error

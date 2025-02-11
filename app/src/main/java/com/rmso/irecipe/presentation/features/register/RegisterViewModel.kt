@@ -32,7 +32,7 @@ class RegisterViewModel(
             it.copy(
                 email = email,
                 isEmailInvalid = email.isValidEmail().not() &&
-                        email.isNotEmpty()
+                    email.isNotEmpty()
             )
         }
     }
@@ -42,9 +42,9 @@ class RegisterViewModel(
             it.copy(
                 password = password,
                 isPasswordInvalid = password.isValidPassword().not() &&
-                        password.isNotEmpty(),
+                    password.isNotEmpty(),
                 isNotEqualsPassword = (confirmPassword != password) &&
-                        confirmPassword.isNotEmpty()
+                    confirmPassword.isNotEmpty()
             )
         }
     }
@@ -54,7 +54,7 @@ class RegisterViewModel(
             it.copy(
                 confirmPassword = confirmPassword,
                 isNotEqualsPassword = (confirmPassword != password) &&
-                        confirmPassword.isNotEmpty() && password.isNotEmpty()
+                    confirmPassword.isNotEmpty() && password.isNotEmpty()
             )
         }
     }

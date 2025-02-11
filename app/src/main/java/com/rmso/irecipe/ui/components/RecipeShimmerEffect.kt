@@ -20,26 +20,30 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.rmso.irecipe.ui.theme.IRecipeTheme
 
+private const val DURATION_ANIMATION = 1000
+
 @Composable
 fun RecipeShimmerEffect(
     modifier: Modifier = Modifier,
     width: Dp,
-    height: Dp,
+    height: Dp
 ) {
     val transition = rememberInfiniteTransition(label = "")
     val translateAnimation = transition.animateFloat(
         initialValue = 0f,
         targetValue = 1000f,
         animationSpec = infiniteRepeatable(
-            animation = tween(1000), repeatMode = RepeatMode.Reverse
-        ), label = "Shimmer loading"
+            animation = tween(DURATION_ANIMATION),
+            repeatMode = RepeatMode.Reverse
+        ),
+        label = "Shimmer loading"
     )
 
     val brush = Brush.linearGradient(
         colors = listOf(
             Color(0xFFB8B5B5),
             Color(0xFF8F8B8B),
-            Color(0xFFB8B5B5),
+            Color(0xFFB8B5B5)
         ),
         start = Offset.Zero,
         end = Offset(x = translateAnimation.value, y = translateAnimation.value)
@@ -66,5 +70,4 @@ private fun RecipeShimmerEffectPreview() {
             height = 100.dp
         )
     }
-
 }

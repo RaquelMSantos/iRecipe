@@ -26,6 +26,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
@@ -67,7 +68,7 @@ internal fun RegisterContent(
             isVisible = registerState.errorMessage.isNotEmpty()
         )
         Text(
-            text = "Register",
+            text = stringResource(R.string.register_title),
             modifier = Modifier
                 .align(Alignment.CenterHorizontally)
                 .padding(top = 16.dp),
@@ -81,7 +82,7 @@ internal fun RegisterContent(
             value = registerState.email,
             onValueChange = onEmailChanged,
             shape = shapes.medium,
-            label = { Text("Email") },
+            label = { Text(stringResource(R.string.label_email)) },
             leadingIcon = {
                 Icon(
                     imageVector = Icons.Filled.Person,
@@ -89,7 +90,7 @@ internal fun RegisterContent(
                 )
             },
             supportingText = {
-                if (registerState.isEmailInvalid) Text("Please enter a valid email")
+                if (registerState.isEmailInvalid) Text(stringResource(R.string.label_email_error))
             },
             isError = registerState.isEmailInvalid,
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email)
@@ -104,7 +105,7 @@ internal fun RegisterContent(
                 onPasswordChanged(newPassword, registerState.confirmPassword)
             },
             shape = shapes.medium,
-            label = { Text("Password") },
+            label = { Text(stringResource(R.string.label_password)) },
             leadingIcon = {
                 Icon(
                     imageVector = Icons.Filled.Lock,
@@ -120,9 +121,9 @@ internal fun RegisterContent(
                             Icons.Outlined.VisibilityOff
                         },
                         contentDescription = if (registerState.isShowPassword) {
-                            "hide password"
+                            stringResource(R.string.hide_password)
                         } else {
-                            "show password"
+                            stringResource(R.string.show_password)
                         }
                     )
                 }
@@ -134,7 +135,7 @@ internal fun RegisterContent(
             },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
             supportingText = {
-                if (registerState.isPasswordInvalid) Text("Please enter a valid password ")
+                if (registerState.isPasswordInvalid) Text(stringResource(R.string.label_password_error))
             },
             isError = registerState.isPasswordInvalid
         )
@@ -148,7 +149,7 @@ internal fun RegisterContent(
                 onConfirmPasswordChanged(newConfirmPassword, registerState.password)
             },
             shape = shapes.medium,
-            label = { Text("Confirm Password") },
+            label = { Text(stringResource(R.string.label_confirm_password)) },
             leadingIcon = {
                 Icon(
                     imageVector = Icons.Filled.Lock,
@@ -164,9 +165,9 @@ internal fun RegisterContent(
                             Icons.Outlined.VisibilityOff
                         },
                         contentDescription = if (registerState.isShowConfirmPassword) {
-                            "hide password"
+                            stringResource(R.string.hide_password)
                         } else {
-                            "show password"
+                            stringResource(R.string.show_password)
                         }
                     )
                 }
@@ -179,7 +180,7 @@ internal fun RegisterContent(
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
             supportingText = {
                 if (registerState.isNotEqualsPassword) {
-                    Text("Passwords do not match")
+                    Text(stringResource(R.string.label_confirm_password_error))
                 }
             },
             isError = registerState.isNotEqualsPassword
@@ -194,7 +195,7 @@ internal fun RegisterContent(
         )
         Spacer(modifier = Modifier.height(40.dp))
         Text(
-            text = "--- OR Continue with ---",
+            text = stringResource(R.string.continue_label),
             style = Typography.bodySmall,
             modifier = Modifier
                 .align(Alignment.CenterHorizontally)
@@ -229,7 +230,7 @@ internal fun RegisterContent(
 
         Text(
             buildAnnotatedString {
-                append("Do you have an account? ")
+                append(stringResource(R.string.have_account))
                 withStyle(
                     style = SpanStyle(
                         fontFamily = poppinsFontFamily,
@@ -238,7 +239,7 @@ internal fun RegisterContent(
                         color = Orange500
                     )
                 ) {
-                    append("Sign In")
+                    append(stringResource(R.string.sign_in_title))
                 }
             },
             style = Typography.bodyMedium,

@@ -11,6 +11,8 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
 import com.rmso.irecipe.domain.model.recipe.Recipe
 import com.rmso.irecipe.presentation.MainViewModel
+import com.rmso.irecipe.presentation.features.details.navigation.detailsRecipeScreen
+import com.rmso.irecipe.presentation.features.details.navigation.navigateToDetailsRecipe
 import com.rmso.irecipe.presentation.features.home.navigation.homeScreen
 import com.rmso.irecipe.presentation.features.home.navigation.navigateToHome
 import com.rmso.irecipe.presentation.features.register.navigation.navigateToRegister
@@ -46,7 +48,7 @@ fun RecipeNavHost(mainViewModel: MainViewModel) {
             homeScreen(
                 openSignInScreen = navController::navigateToSignIn,
                 openDetailsRecipeScreen = { recipe: Recipe ->
-//                TODO("add detailsScreen")
+                    navController.navigateToDetailsRecipe(recipe)
                 }
             )
             signInScreen(
@@ -57,6 +59,7 @@ fun RecipeNavHost(mainViewModel: MainViewModel) {
                 openHomeScreen = navController::navigateToHome,
                 openSignInScreen = navController::navigateToSignIn
             )
+            detailsRecipeScreen()
         }
     }
 }

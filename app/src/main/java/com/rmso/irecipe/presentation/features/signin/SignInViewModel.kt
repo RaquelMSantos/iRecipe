@@ -35,7 +35,7 @@ class SignInViewModel(
             it.copy(
                 email = email,
                 isEmailInvalid = email.isValidEmail().not() &&
-                        email.isNotEmpty()
+                    email.isNotEmpty()
             )
         }
     }

@@ -18,10 +18,6 @@ fun RegisterScreen(
     LaunchedEffect(key1 = viewModel) {
         viewModel.uiAction.collect { action ->
             when (action) {
-                RegisterAction.NavigateToSignIn -> {
-                    openSignInScreen()
-                }
-
                 RegisterAction.NavigateToHome -> {
                     openHomeScreen()
                 }

@@ -14,10 +14,10 @@ data class RegisterState(
 ) {
     val isButtonEnabled: Boolean
         get() = isEmailInvalid.not() &&
-                isPasswordInvalid.not() &&
-                isNotEqualsPassword.not() &&
-                email.isNotEmpty() &&
-                password.isNotEmpty() &&
-                confirmPassword.isNotEmpty() &&
-                isLoading.not()
+            isPasswordInvalid.not() &&
+            isNotEqualsPassword.not() &&
+            email.isNotEmpty() &&
+            password.isNotEmpty() &&
+            confirmPassword.isNotEmpty() &&
+            isLoading.not()
 }

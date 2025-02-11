@@ -27,6 +27,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
@@ -67,7 +68,7 @@ internal fun SignInContent(
                 isVisible = signInState.errorMessage.isNotEmpty()
             )
             Text(
-                text = "Sign In",
+                text = stringResource(R.string.sign_in_title),
                 modifier = Modifier
                     .align(Alignment.CenterHorizontally)
                     .padding(top = 16.dp),
@@ -81,7 +82,7 @@ internal fun SignInContent(
                 value = signInState.email,
                 onValueChange = onEmailChanged,
                 shape = shapes.medium,
-                label = { Text("Email") },
+                label = { Text(stringResource(R.string.label_email)) },
                 leadingIcon = {
                     Icon(
                         imageVector = Icons.Filled.Person,
@@ -89,7 +90,7 @@ internal fun SignInContent(
                     )
                 },
                 supportingText = {
-                    if (signInState.isEmailInvalid) Text("Please enter a valid email")
+                    if (signInState.isEmailInvalid) Text(stringResource(R.string.label_email_error))
                 },
                 isError = signInState.isEmailInvalid
             )
@@ -101,7 +102,7 @@ internal fun SignInContent(
                 value = signInState.password,
                 onValueChange = onPasswordChanged,
                 shape = shapes.medium,
-                label = { Text("Password") },
+                label = { Text(stringResource(R.string.label_password)) },
                 leadingIcon = {
                     Icon(
                         imageVector = Icons.Filled.Lock,
@@ -117,9 +118,9 @@ internal fun SignInContent(
                                 Icons.Outlined.VisibilityOff
                             },
                             contentDescription = if (signInState.isShowPassword) {
-                                "hide password"
+                                stringResource(R.string.hide_password)
                             } else {
-                                "show password"
+                                stringResource(R.string.show_password)
                             }
                         )
                     }
@@ -136,14 +137,14 @@ internal fun SignInContent(
             RecipeButton(
                 modifier = Modifier.fillMaxWidth(),
                 onClick = onSignInButtonClick,
-                text = "Sign In",
+                text = stringResource(R.string.sign_in_title),
                 isEnabled = signInState.isButtonEnabled,
                 isLoading = signInState.isLoading
             )
 
             Spacer(modifier = Modifier.height(75.dp))
             Text(
-                text = "--- OR Continue with ---",
+                text = stringResource(R.string.continue_label),
                 style = Typography.bodySmall,
                 modifier = Modifier
                     .align(Alignment.CenterHorizontally)
@@ -178,7 +179,7 @@ internal fun SignInContent(
 
             Text(
                 buildAnnotatedString {
-                    append("Not A Member? ")
+                    append(stringResource(R.string.not_member))
                     withStyle(
                         style = SpanStyle(
                             fontFamily = poppinsFontFamily,
@@ -187,7 +188,7 @@ internal fun SignInContent(
                             color = Orange500
                         )
                     ) {
-                        append("Register Now")
+                        append(stringResource(R.string.register_now))
                     }
                 },
                 style = Typography.bodyMedium,

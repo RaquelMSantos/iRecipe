@@ -3,4 +3,24 @@
     <string name="welcome_title">Thousands of tested recipes</string>
     <string name="welcome_description">There is no need to fear failure. Tested recipes are guaranteed to work by our professional chefs.</string>
     <string name="welcome_button">Get Started</string>
+    <string name="sign_in_title">Sign In</string>
+    <string name="label_email">Email</string>
+    <string name="label_email_error">Please enter a valid email</string>
+    <string name="label_password">Password</string>
+    <string name="label_password_error">Please enter a valid email</string>
+    <string name="label_confirm_password">Confirm Password</string>
+    <string name="label_confirm_password_error">Passwords do not match</string>
+    <string name="hide_password">hide password</string>
+    <string name="show_password">show password</string>
+    <string name="continue_label">--- OR Continue with ---</string>
+    <string name="not_member">Not A Member? </string>
+    <string name="have_account">Do you have an account? </string>
+    <string name="register_now">Register Now</string>
+    <string name="register_title">Register</string>
+    <string name="home_tags_title">What is your favorite dish?</string>
+    <string name="recipes_title">Recipes</string>
+    <string name="welcome_user_title">Welcome, </string>
+    <string name="watch_video">Watch Video</string>
+    <string name="description_title">Description</string>
+    <string name="ingredients_title">Ingredients</string>
 </resources>

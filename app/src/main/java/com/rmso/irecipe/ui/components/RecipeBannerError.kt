@@ -27,7 +27,8 @@ fun RecipeBannerError(
         ) {
             Text(
                 text = messageError,
-                Modifier.padding(16.dp), color = Gray50
+                Modifier.padding(16.dp),
+                color = Gray50
             )
         }
     }
