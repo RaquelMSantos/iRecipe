@@ -11,6 +11,9 @@ iRecipe é um aplicativo que utiliza a [API Tasty](https://rapidapi.com/apidojo/
 
 ## Screenshots
 <p>
+    <img src="https://github.com/user-attachments/assets/7036eabf-69e2-4d10-a4fb-004c44843112" width="300" height="606">
+</p>
+<p>
     <img src="https://github.com/user-attachments/assets/22996e87-5ee8-4f7b-a3fd-bce0861f1a52" width="270" height="606">
     <img src="https://github.com/user-attachments/assets/cb794d53-b898-41da-9214-1d6f5f8d0975" width="270" height="606">
 </p>
