@@ -31,9 +31,7 @@ jobs:
 
       # configuration api key
       - name: Use API from secrets
-        env:
-          API_KEY: ${{ secrets.API_KEY }}
-        run: echo API_KEY > $GITHUB_WORKSPACE/local.properties
+        run: echo "${{ secrets.API_KEY }}" > $GITHUB_WORKSPACE/local.properties
 
       # Build with Gradle
       - name: Build with Gradle

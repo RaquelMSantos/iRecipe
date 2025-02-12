@@ -20,9 +20,6 @@ android {
     namespace = "com.rmso.irecipe"
     compileSdk = 34
 
-    val properties = Properties()
-    properties.load(project.rootProject.file("local.properties").inputStream())
-
     defaultConfig {
         applicationId = "com.rmso.irecipe"
         minSdk = 24
@@ -35,6 +32,8 @@ android {
             useSupportLibrary = true
         }
 
+        val properties = Properties()
+        properties.load(project.rootProject.file("local.properties").inputStream())
         buildConfigField("String", "API_KEY", properties.getProperty("API_KEY"))
     }
 
