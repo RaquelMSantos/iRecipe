@@ -30,8 +30,10 @@ jobs:
         run: echo $GOOGLE_SERVICES_JSON > /home/runner/work/iRecipe/iRecipe/app/google-services.json
 
       # configuration api key
-      - name: Use API in Workflow
-        run: echo ${{ secrets.API_KEY }}
+      - name: Use API from secrets
+        env:
+          API_KEY: ${{ secrets.API_KEY }}
+        run: echo API_KEY > $GITHUB_WORKSPACE/local.properties
 
       # Build with Gradle
       - name: Build with Gradle
