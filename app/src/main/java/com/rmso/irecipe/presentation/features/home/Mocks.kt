@@ -15,14 +15,14 @@ val mockRecipeList = listOf(
         instructions = listOf(
             Instruction(
                 "In a blender or food processor, " +
-                        "combine the yogurt, lime juice, pepper, " +
-                        "and chili powder and pulse to combine. Add ½ of" +
-                        " the avocado and blend until creamy."
+                    "combine the yogurt, lime juice, pepper, " +
+                    "and chili powder and pulse to combine. Add ½ of" +
+                    " the avocado and blend until creamy."
             ),
             Instruction(
                 "In a medium bowl, combine the chicken," +
-                        " yogurt sauce, celery, the remaining ½ avocado," +
-                        " onion, and salt. Mix until well combined."
+                    " yogurt sauce, celery, the remaining ½ avocado," +
+                    " onion, and salt. Mix until well combined."
             )
         ),
         name = "Low-Carb Avocado Chicken Salad",
@@ -47,20 +47,20 @@ val mockRecipeList = listOf(
     ),
     Recipe(
         description = "This chicken salad is a lunchtime delight! Packed with " +
-                "creamy avocado, tender chicken, and crunchy veggies, " +
-                "it's a healthy and satisfying meal that won't weigh you down. " +
-                "Tossed in a tangy yogurt dressing with a hint of spice, it's a " +
-                "flavor explosion that's perfect for a light meal.",
+            "creamy avocado, tender chicken, and crunchy veggies, " +
+            "it's a healthy and satisfying meal that won't weigh you down. " +
+            "Tossed in a tangy yogurt dressing with a hint of spice, it's a " +
+            "flavor explosion that's perfect for a light meal.",
         id = 1,
         instructions = listOf(
             Instruction(
                 "In a blender or food processor, combine the yogurt, " +
-                        "lime juice, pepper, and chili powder and pulse to combine." +
-                        " Add ½ of the avocado and blend until creamy."
+                    "lime juice, pepper, and chili powder and pulse to combine." +
+                    " Add ½ of the avocado and blend until creamy."
             ),
             Instruction(
                 "In a medium bowl, combine the chicken, yogurt sauce, " +
-                        "celery, the remaining ½ avocado, onion, and salt. Mix until well combined."
+                    "celery, the remaining ½ avocado, onion, and salt. Mix until well combined."
             )
         ),
         name = "Low-Carb Avocado Chicken Salad",

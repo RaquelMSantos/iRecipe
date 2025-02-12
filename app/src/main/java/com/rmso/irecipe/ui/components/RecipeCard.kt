@@ -108,15 +108,15 @@ private fun RecipeCardPreview() {
             onCardClick = {},
             recipe = Recipe(
                 description = "This chicken salad is a lunchtime delight! " +
-                        "Packed with creamy avocado, tender chicken, and crunchy veggies," +
-                        " it's a healthy and satisfying meal that won't weigh you down. " +
-                        "Tossed in a tangy yogurt dressing with a hint of spice, it's a " +
-                        "flavor explosion that's perfect for a light meal.",
+                    "Packed with creamy avocado, tender chicken, and crunchy veggies," +
+                    " it's a healthy and satisfying meal that won't weigh you down. " +
+                    "Tossed in a tangy yogurt dressing with a hint of spice, it's a " +
+                    "flavor explosion that's perfect for a light meal.",
                 id = 1,
                 instructions = listOf(
                     Instruction(
                         "In a blender or food processor, " +
-                                "combine the yogurt, lime juice," +
+                            "combine the yogurt, lime juice," +
                             " pepper, and chili powder and pulse to combine. Add ½ of the " +
                             "avocado and blend until creamy."
                     ),
