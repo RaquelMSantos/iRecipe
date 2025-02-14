@@ -5,5 +5,5 @@ import com.rmso.irecipe.domain.repository.RecipeRepository
 class GetRecipesUseCase(
     private val recipeRepository: RecipeRepository
 ) {
-    suspend operator fun invoke() = recipeRepository.getRecipes()
+    operator fun invoke() = recipeRepository.getRecipes()
 }

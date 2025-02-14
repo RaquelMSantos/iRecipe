@@ -17,7 +17,7 @@ import kotlinx.coroutines.tasks.await
 class AuthRepositoryImpl(
     private val firebaseAuth: FirebaseAuth
 ) : AuthRepository {
-    override suspend fun register(
+    override fun register(
         email: String,
         password: String
     ): Flow<Result<AuthUser>> =
@@ -32,7 +32,7 @@ class AuthRepositoryImpl(
             }
         }
 
-    override suspend fun signIn(
+    override fun signIn(
         email: String,
         password: String
     ): Flow<Result<AuthUser>> =

@@ -5,5 +5,5 @@ import com.rmso.irecipe.domain.model.recipe.Tasty
 import kotlinx.coroutines.flow.Flow
 
 interface RecipeRepository {
-    suspend fun getRecipes(): Flow<Result<Tasty?>>
+    fun getRecipes(): Flow<Result<Tasty?>>
 }

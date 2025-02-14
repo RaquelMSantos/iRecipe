@@ -7,19 +7,22 @@ import com.rmso.irecipe.data.remote.api.Result.Error
 import com.rmso.irecipe.data.remote.api.Result.Loading
 import com.rmso.irecipe.data.remote.api.Result.Success
 import com.rmso.irecipe.domain.usecase.SignInUseCase
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
 class SignInViewModel(
-    val signInUseCase: SignInUseCase
+    val signInUseCase: SignInUseCase,
+    private val dispatcher: CoroutineDispatcher = Dispatchers.IO
 ) : ViewModel() {
-
     private val _uiState = MutableStateFlow(SignInState())
     val uiState: StateFlow<SignInState> = _uiState.asStateFlow()
 
@@ -34,7 +37,8 @@ class SignInViewModel(
         _uiState.update {
             it.copy(
                 email = email,
-                isEmailInvalid = email.isValidEmail().not() &&
+                isEmailInvalid =
+                email.isValidEmail().not() &&
                     email.isNotEmpty()
             )
         }
@@ -49,21 +53,22 @@ class SignInViewModel(
             signInUseCase(
                 uiState.value.email,
                 uiState.value.password
-            ).collect { result ->
-                when (result) {
-                    is Error -> {
-                        _uiState.update { it.copy(errorMessage = result.message) }
-                    }
+            ).flowOn(dispatcher)
+                .collect { result ->
+                    when (result) {
+                        is Error -> {
+                            _uiState.update { it.copy(errorMessage = result.message) }
+                        }
 
-                    Loading -> {
-                        _uiState.update { it.copy(isLoading = true) }
-                    }
+                        Loading -> {
+                            _uiState.update { it.copy(isLoading = true) }
+                        }
 
-                    is Success -> {
-                        _uiAction.emit(SignInAction.NavigateToHome)
+                        is Success -> {
+                            _uiAction.emit(SignInAction.NavigateToHome)
+                        }
                     }
                 }
-            }
             _uiState.update { it.copy(isLoading = false) }
         }
     }

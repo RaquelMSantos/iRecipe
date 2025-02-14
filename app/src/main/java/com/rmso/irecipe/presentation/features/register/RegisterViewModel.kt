@@ -8,19 +8,22 @@ import com.rmso.irecipe.data.remote.api.Result.Error
 import com.rmso.irecipe.data.remote.api.Result.Loading
 import com.rmso.irecipe.data.remote.api.Result.Success
 import com.rmso.irecipe.domain.usecase.RegisterUserUseCase
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
 class RegisterViewModel(
-    val registerUserUseCase: RegisterUserUseCase
+    val registerUserUseCase: RegisterUserUseCase,
+    private val dispatcher: CoroutineDispatcher = Dispatchers.IO
 ) : ViewModel() {
-
     private val _uiState = MutableStateFlow(RegisterState())
     val uiState: StateFlow<RegisterState> = _uiState.asStateFlow()
 
@@ -31,30 +34,41 @@ class RegisterViewModel(
         _uiState.update {
             it.copy(
                 email = email,
-                isEmailInvalid = email.isValidEmail().not() &&
+                isEmailInvalid =
+                email.isValidEmail().not() &&
                     email.isNotEmpty()
             )
         }
     }
 
-    fun updatePassword(password: String, confirmPassword: String) {
+    fun updatePassword(
+        password: String,
+        confirmPassword: String
+    ) {
         _uiState.update {
             it.copy(
                 password = password,
-                isPasswordInvalid = password.isValidPassword().not() &&
+                isPasswordInvalid =
+                password.isValidPassword().not() &&
                     password.isNotEmpty(),
-                isNotEqualsPassword = (confirmPassword != password) &&
+                isNotEqualsPassword =
+                (confirmPassword != password) &&
                     confirmPassword.isNotEmpty()
             )
         }
     }
 
-    fun updateConfirmPassword(confirmPassword: String, password: String) {
+    fun updateConfirmPassword(
+        confirmPassword: String,
+        password: String
+    ) {
         _uiState.update {
             it.copy(
                 confirmPassword = confirmPassword,
-                isNotEqualsPassword = (confirmPassword != password) &&
-                    confirmPassword.isNotEmpty() && password.isNotEmpty()
+                isNotEqualsPassword =
+                (confirmPassword != password) &&
+                    confirmPassword.isNotEmpty() &&
+                    password.isNotEmpty()
             )
         }
     }
@@ -64,21 +78,22 @@ class RegisterViewModel(
             registerUserUseCase(
                 uiState.value.email,
                 uiState.value.password
-            ).collect { result ->
-                when (result) {
-                    is Error -> {
-                        _uiState.update { it.copy(errorMessage = result.message) }
-                    }
+            ).flowOn(dispatcher)
+                .collect { result ->
+                    when (result) {
+                        is Error -> {
+                            _uiState.update { it.copy(errorMessage = result.message) }
+                        }
 
-                    Loading -> {
-                        _uiState.update { it.copy(isLoading = true) }
-                    }
+                        Loading -> {
+                            _uiState.update { it.copy(isLoading = true) }
+                        }
 
-                    is Success -> {
-                        _uiAction.emit(RegisterAction.NavigateToHome)
+                        is Success -> {
+                            _uiAction.emit(RegisterAction.NavigateToHome)
+                        }
                     }
                 }
-            }
             _uiState.update { it.copy(isLoading = false) }
         }
     }
