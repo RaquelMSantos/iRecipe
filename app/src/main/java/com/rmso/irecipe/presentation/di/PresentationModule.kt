@@ -13,7 +13,7 @@ import org.koin.dsl.module
 val presentationModule =
     module {
         single<Player> { ExoPlayer.Builder(get()).build() }
-        viewModel { MainViewModel(hasUserUseCase = get()) }
+        viewModel { MainViewModel(hasUserUseCase = get(), dispatcher = get()) }
         viewModel { HomeViewModel(getRecipesUseCase = get(), getCurrentUserUseCase = get()) }
         viewModel { SignInViewModel(signInUseCase = get()) }
         viewModel { RegisterViewModel(registerUserUseCase = get()) }

@@ -5,12 +5,12 @@ import com.rmso.irecipe.domain.model.AuthUser
 import kotlinx.coroutines.flow.Flow
 
 interface AuthRepository {
-    suspend fun register(
+    fun register(
         email: String,
         password: String
     ): Flow<Result<AuthUser>>
 
-    suspend fun signIn(
+    fun signIn(
         email: String,
         password: String
     ): Flow<Result<AuthUser>>

@@ -12,7 +12,7 @@ import kotlinx.coroutines.flow.flow
 class RecipeRepositoryImpl(
     private val tastyApi: TastyApi
 ) : RecipeRepository {
-    override suspend fun getRecipes(): Flow<Result<Tasty?>> =
+    override fun getRecipes(): Flow<Result<Tasty?>> =
         flow {
             emit(Result.Loading)
             try {

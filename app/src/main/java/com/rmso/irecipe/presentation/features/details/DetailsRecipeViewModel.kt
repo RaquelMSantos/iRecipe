@@ -13,7 +13,6 @@ import kotlinx.coroutines.flow.update
 class DetailsRecipeViewModel(
     val player: Player
 ) : ViewModel() {
-
     private val _uiState = MutableStateFlow(DetailsRecipeState())
     val uiState: StateFlow<DetailsRecipeState> = _uiState.asStateFlow()
 

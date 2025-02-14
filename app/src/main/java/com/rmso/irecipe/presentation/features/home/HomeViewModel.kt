@@ -7,20 +7,23 @@ import com.rmso.irecipe.data.remote.api.Result.Loading
 import com.rmso.irecipe.data.remote.api.Result.Success
 import com.rmso.irecipe.domain.usecase.GetCurrentUserUseCase
 import com.rmso.irecipe.domain.usecase.GetRecipesUseCase
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
 class HomeViewModel(
     val getRecipesUseCase: GetRecipesUseCase,
-    val getCurrentUserUseCase: GetCurrentUserUseCase
+    val getCurrentUserUseCase: GetCurrentUserUseCase,
+    private val dispatcher: CoroutineDispatcher = Dispatchers.IO
 ) : ViewModel() {
-
     private val _uiState = MutableStateFlow(HomeState())
     val uiState: StateFlow<HomeState> = _uiState.asStateFlow()
 
@@ -34,7 +37,7 @@ class HomeViewModel(
 
     private fun getCurrentUser() {
         viewModelScope.launch {
-            getCurrentUserUseCase().collect { user ->
+            getCurrentUserUseCase().flowOn(dispatcher).collect { user ->
                 user?.let {
                     _uiState.update { it.copy(user = user) }
                 } ?: HomeAction.NavigateToSignIn
@@ -44,7 +47,7 @@ class HomeViewModel(
 
     private fun getRecipes() {
         viewModelScope.launch {
-            getRecipesUseCase().collect { result ->
+            getRecipesUseCase().flowOn(dispatcher).collect { result ->
                 when (result) {
                     is Error -> {
                         _uiState.update { it.copy(errorMessage = result.message) }

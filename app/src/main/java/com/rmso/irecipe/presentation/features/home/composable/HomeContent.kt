@@ -103,7 +103,7 @@ fun AvatarProfile(email: String) {
         Spacer(modifier = Modifier.width(8.dp))
         Column {
             Text(
-                text = stringResource(R.string.welcome_title),
+                text = stringResource(R.string.welcome_user_title),
                 style = Typography.bodyMedium,
                 color = Gray400
             )
